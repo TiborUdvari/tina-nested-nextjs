@@ -3,7 +3,7 @@
     {
       "_template": "section",
       "title": "Title Part of the section",
-      "content": "Content part of the section"
+      "content": "* Content part of the section\n* Some list lol"
     },
     {
       "_template": "section",
