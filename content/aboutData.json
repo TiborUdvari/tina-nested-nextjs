@@ -4,6 +4,11 @@
       "_template": "section",
       "title": "Title Part of the section",
       "content": "Content part of the section"
+    },
+    {
+      "_template": "section",
+      "title": "Another section over here",
+      "content": "Some other content over here lol "
     }
   ]
 }
