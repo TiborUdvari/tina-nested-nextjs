@@ -1,0 +1,10 @@
+{
+   "blocks": [
+      {
+        "_template": "section",
+        "title": "Title",
+        "content": "content"
+      }
+    ]
+  }
+  
