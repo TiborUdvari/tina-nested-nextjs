@@ -19,7 +19,7 @@ function AboutPage({file, Component, pageProps }) {
   const formOptions = {
       label: 'About Page',
         id: "./data/data.json",
-        initialValues: data,
+        // initialValues: data,
   };
   
   const [data, form] = useGithubJsonForm(file, formOptions)

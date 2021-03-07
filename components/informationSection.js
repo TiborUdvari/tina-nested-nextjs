@@ -1,7 +1,9 @@
 import React from 'react';
 import { InlineTextarea, BlocksControls } from 'react-tinacms-inline';
+import { InlineWysiwyg } from 'react-tinacms-editor'
+import ReactMarkdown from 'react-markdown'
 
-export function InformationSection() {
+export function InformationSection({content}) {
     return (
         <div className="hero">
           <div className="wrapper wrapper--narrow">
@@ -9,7 +11,9 @@ export function InformationSection() {
               <InlineTextarea name="title" focusRing={false} />
             </h1>
             <div>
-              <InlineTextarea name="content" focusRing={false} />
+              <InlineWysiwyg name="content" format="markdown" sticky={false} focusRing={true}>
+                <ReactMarkdown source={content} />
+              </InlineWysiwyg>
             </div>
           </div>
         </div>
@@ -19,7 +23,7 @@ export function InformationSection() {
 export const sectionBlock = {
     Component: ({index, data}) => (
         <BlocksControls index={index} focusRing={{ offset: 0 }} insetControls>
-            <InformationSection />
+            <InformationSection {...data}/>
         </BlocksControls>
     ),
     template: {
