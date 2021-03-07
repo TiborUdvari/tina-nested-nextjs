@@ -1,10 +1,9 @@
 {
-   "blocks": [
-      {
-        "_template": "section",
-        "title": "Title",
-        "content": "content"
-      }
-    ]
-  }
-  
+  "blocks": [
+    {
+      "_template": "section",
+      "title": "Title Part of the section",
+      "content": "Content part of the section"
+    }
+  ]
+}
