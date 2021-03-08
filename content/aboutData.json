@@ -2,7 +2,7 @@
   "blocks": [
     {
       "_template": "section",
-      "title": "Title Part of the section",
+      "title": "Hello world whateevr",
       "content": "* Content part of the section\n* Some list lol"
     },
     {
