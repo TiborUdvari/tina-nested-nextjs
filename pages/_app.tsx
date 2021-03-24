@@ -1,7 +1,8 @@
 import App from "next/app";
 import { TinaCMS, TinaProvider } from "tinacms";
 import { MarkdownFieldPlugin } from "react-tinacms-editor";
-import { ChakraProvider } from "@chakra-ui/react";
+import { ChakraProvider, extendTheme } from "@chakra-ui/react";
+
 
 import {
   GithubClient,
@@ -11,6 +12,7 @@ import {
 
 export default class Site extends App {
   cms: TinaCMS;
+  theme: {};
 
   constructor(props) {
     super(props);
@@ -46,7 +48,15 @@ export default class Site extends App {
       toolbar: props.pageProps.preview,
       plugins: [MarkdownFieldPlugin],
     });
+
+    this.theme = extendTheme({
+      fonts: {
+        heading: "Riforma LL",
+        body: "Riforma LL",
+      },
+    })
   }
+
 
   render() {
     const { Component, pageProps } = this.props;
@@ -54,7 +64,7 @@ export default class Site extends App {
       /**
        * 5. Wrap the page Component with the Tina and Github providers
        */
-      <ChakraProvider>
+      <ChakraProvider theme={this.theme}>
         <TinaProvider cms={this.cms}>
           <TinacmsGithubProvider
             onLogin={onLogin}
