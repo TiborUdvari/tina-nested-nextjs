@@ -9,6 +9,8 @@ import {
   GithubMediaStore,
 } from "react-tinacms-github";
 
+import { NextGithubMediaStore } from 'next-tinacms-github'
+
 export default class Site extends App {
   cms: TinaCMS;
   theme: {};
@@ -24,7 +26,7 @@ export default class Site extends App {
       baseBranch: process.env.BASE_BRANCH, // e.g. 'master' or 'main' on newer repos
       authScope: "repo", // normally defaults to 'public_repo'
     });
-
+    const mediaStore = new NextGithubMediaStore(github)
     /**
      * 1. Create the TinaCMS instance
      */
@@ -39,7 +41,7 @@ export default class Site extends App {
       /**
        * 3. Register the Media Store
        */
-      media: new GithubMediaStore(github),
+      media: mediaStore,
       /**
        * 4. Use the Sidebar and Toolbar
        */
