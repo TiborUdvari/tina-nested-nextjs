@@ -26,6 +26,7 @@ export default class Site extends App {
       baseBranch: process.env.BASE_BRANCH, // e.g. 'master' or 'main' on newer repos
       authScope: "repo", // normally defaults to 'public_repo'
     });
+    
     const mediaStore = new NextGithubMediaStore(github)
     /**
      * 1. Create the TinaCMS instance

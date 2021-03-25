@@ -2,6 +2,7 @@ import React from "react";
 import { InlineTextarea, BlocksControls } from "react-tinacms-inline";
 import { InlineWysiwyg } from "react-tinacms-editor";
 import ReactMarkdown from "react-markdown";
+import Image from "next/image";
 import {
   Container,
   Heading,
@@ -9,9 +10,30 @@ import {
   Flex,
   Box,
   Divider,
+  Text,
 } from "@chakra-ui/react";
 
 export function InformationSection({ content }) {
+  // we have
+  const renderers = {
+    image: ({ src, alt, ...props }) => {
+      return (
+        <Box pb={14}>
+          <Image
+            layout="responsive"
+            width={878}
+            height={662}
+            src={src}
+            alt={alt}
+          />
+          <Text fontSize="xs" textTransform="uppercase" color="gray.500">
+            {alt}
+          </Text>
+        </Box>
+      );
+    },
+  };
+
   return (
     <>
       <Divider />
@@ -31,7 +53,7 @@ export function InformationSection({ content }) {
             sticky={false}
             focusRing={true}
           >
-            <ReactMarkdown source={content} />
+            <ReactMarkdown source={content} renderers={renderers} />
           </InlineWysiwyg>
         </Box>
       </Flex>
