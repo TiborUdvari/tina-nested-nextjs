@@ -49,6 +49,13 @@ export default class Site extends App {
     });
 
     this.theme = extendTheme({
+      styles: { 
+        global: { 
+            html: { 
+                fontSize: "16px"
+            }
+         }
+      },
       fonts: {
         heading: "Riforma LL",
         body: "Riforma LL",

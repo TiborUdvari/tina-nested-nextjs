@@ -4,10 +4,11 @@ import { GetStaticProps } from "next";
 import Layout from "../components/layouts/layout";
 
 import { InlineForm, InlineBlocks } from "react-tinacms-inline";
-import { sectionBlock } from "../components/informationSection";
+import { sectionBlock } from "../components/sections/informationSection";
 import { getGithubPreviewProps, parseJson } from "next-tinacms-github";
 
 //import data from "../content/aboutData.json";
+import { Container, Heading } from "@chakra-ui/react";
 
 import {
   useGithubJsonForm,
@@ -27,6 +28,7 @@ function AboutPage({ file, Component, pageProps }) {
 
   return (
     <Layout>
+      <Heading as="h1" size="3xl">About</Heading>
       <div className="home">
         <InlineForm form={form}>
           <InlineBlocks name="blocks" blocks={ABOUT_BLOCKS} />
