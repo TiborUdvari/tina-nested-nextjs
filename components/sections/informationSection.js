@@ -2,26 +2,40 @@ import React from "react";
 import { InlineTextarea, BlocksControls } from "react-tinacms-inline";
 import { InlineWysiwyg } from "react-tinacms-editor";
 import ReactMarkdown from "react-markdown";
-import { Container, Heading, Stack, Flex, Box } from "@chakra-ui/react";
+import {
+  Container,
+  Heading,
+  Stack,
+  Flex,
+  Box,
+  Divider,
+} from "@chakra-ui/react";
 
 export function InformationSection({ content }) {
   return (
-    <Flex className="hero">
-      <Heading fontWeight={"normal"} flex="1 0 33%" fontSize="3xl">
-        <InlineTextarea name="title" focusRing={false} />
-      </Heading>
-      <Box flex="1 0 66%" fontSize="xl">
-      <InlineWysiwyg
-        name="content"
-        format="markdown"
-        sticky={false}
-        focusRing={true}
-        
+    <>
+      <Divider />
+      <Flex pt={5} pb={14}>
+        <Heading
+          fontWeight={"normal"}
+          flex="1 0 33%"
+          fontSize="3xl"
+          textTransform="uppercase"
         >
-        <ReactMarkdown source={content} />
-      </InlineWysiwyg>
-      </Box>
-    </Flex>
+          <InlineTextarea name="title" focusRing={false} />
+        </Heading>
+        <Box flex="1 0 66%" fontSize="xl">
+          <InlineWysiwyg
+            name="content"
+            format="markdown"
+            sticky={false}
+            focusRing={true}
+          >
+            <ReactMarkdown source={content} />
+          </InlineWysiwyg>
+        </Box>
+      </Flex>
+    </>
   );
 }
 

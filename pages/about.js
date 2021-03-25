@@ -28,7 +28,7 @@ function AboutPage({ file, Component, pageProps }) {
 
   return (
     <Layout>
-      <Heading as="h1" size="3xl">About</Heading>
+      <Heading as="h1" size="3xl" py={5} >About</Heading>
       <div className="home">
         <InlineForm form={form}>
           <InlineBlocks name="blocks" blocks={ABOUT_BLOCKS} />
