@@ -3,7 +3,6 @@ import { TinaCMS, TinaProvider } from "tinacms";
 import { MarkdownFieldPlugin } from "react-tinacms-editor";
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 
-
 import {
   GithubClient,
   TinacmsGithubProvider,
@@ -54,6 +53,14 @@ export default class Site extends App {
         heading: "Riforma LL",
         body: "Riforma LL",
       },
+      sizes: {
+        container: {
+          sm: "640px",
+          md: "768px",
+          lg: "1024px",
+          xl: "1280px",
+        },
+      }
     })
   }
 

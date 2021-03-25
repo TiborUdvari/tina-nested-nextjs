@@ -4,6 +4,7 @@ import { getGithubPreviewProps, parseJson } from 'next-tinacms-github'
 import { GetStaticProps } from 'next'
 import { usePlugin } from 'tinacms'
 import { useGithubJsonForm, useGithubToolbarPlugins } from 'react-tinacms-github'
+import { Container } from "@chakra-ui/react"
 
 export default function Home({file}) {
   // const data = file.data;
@@ -17,7 +18,7 @@ export default function Home({file}) {
   useGithubToolbarPlugins()
 
   return (
-    <div className={styles.container}>
+    <Container>
       <Head>
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
@@ -74,7 +75,7 @@ export default function Home({file}) {
           <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
         </a>
       </footer>
-    </div>
+    </Container>
   )
 }
 
