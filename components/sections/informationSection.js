@@ -1,8 +1,10 @@
 import React from "react";
 import { InlineTextarea, BlocksControls } from "react-tinacms-inline";
-import { InlineWysiwyg } from "react-tinacms-editor";
+import { InlineWysiwyg, InlineBlocks, InlineForm } from "react-tinacms-editor";
 import ReactMarkdown from "react-markdown";
 import Image from "next/image";
+import { imageListBlock } from "../blocks/imageList";
+
 import {
   Container,
   Heading,
@@ -55,15 +57,25 @@ export function InformationSection({ content }) {
           >
             <ReactMarkdown source={content} renderers={renderers} />
           </InlineWysiwyg>
+          <Box>
+          {/* <InlineForm > */}
+            {/* <InlineBlocks name="sectionBlocks" blocks={SECTION_BLOCKS} /> */}
+          {/* </InlineForm> */}
+          </Box>
         </Box>
       </Flex>
     </>
   );
 }
 
+const SECTION_BLOCKS = {
+  imageList: imageListBlock,
+};
+
 export const sectionBlock = {
   Component: ({ index, data }) => (
     <BlocksControls index={index} focusRing={{ offset: 0 }} insetControls>
+      {JSON.stringify(data)}
       <InformationSection {...data} />
     </BlocksControls>
   ),
@@ -72,6 +84,9 @@ export const sectionBlock = {
     defaultItem: {
       title: "Test title",
       content: "Some content",
+      sectionBlocks: [
+        
+      ]
     },
   },
 };

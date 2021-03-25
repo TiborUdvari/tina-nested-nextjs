@@ -9,7 +9,7 @@ import { getGithubPreviewProps, parseJson } from "next-tinacms-github";
 
 //import data from "../content/aboutData.json";
 import { Container, Heading } from "@chakra-ui/react";
-
+import { imageListBlock } from "../components/blocks/imageList"
 import {
   useGithubJsonForm,
   useGithubToolbarPlugins,
@@ -42,6 +42,7 @@ export default AboutPage;
 
 const ABOUT_BLOCKS = {
   section: sectionBlock,
+  imageList: imageListBlock
 };
 
 export const getStaticProps = async function ({ preview, previewData }) {
