@@ -6,6 +6,8 @@ import Layout from "../components/layouts/layout";
 import { InlineForm, InlineBlocks } from "react-tinacms-inline";
 import { sectionBlock } from "../components/sections/informationSection";
 import { getGithubPreviewProps, parseJson } from "next-tinacms-github";
+import dataTest from "../content/aboutData.json";
+import {titleBlock} from "../components/blocks/title";
 
 //import data from "../content/aboutData.json";
 import { Container, Heading } from "@chakra-ui/react";
@@ -22,9 +24,20 @@ function AboutPage({ file, Component, pageProps }) {
     // initialValues: data,
   };
 
-  const [data, form] = useGithubJsonForm(file, formOptions);
+
+  const formConfig = {
+    id: './data/aboutData.json',
+    initialValues: dataTest,
+    onSubmit() {
+      cms.alerts.success('Saved!');
+    },
+  };
+
+  const [, form] = useForm(formConfig);
+
+  // const [data, form] = useGithubJsonForm(file, formOptions);
   usePlugin(form);
-  useGithubToolbarPlugins();
+  // useGithubToolbarPlugins();
 
   return (
     <Layout>
@@ -42,7 +55,7 @@ export default AboutPage;
 
 const ABOUT_BLOCKS = {
   section: sectionBlock,
-  imageList: imageListBlock
+  title: titleBlock
 };
 
 export const getStaticProps = async function ({ preview, previewData }) {

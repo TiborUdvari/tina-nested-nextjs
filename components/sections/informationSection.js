@@ -4,6 +4,7 @@ import { InlineWysiwyg, InlineBlocks, InlineForm } from "react-tinacms-editor";
 import ReactMarkdown from "react-markdown";
 import Image from "next/image";
 import { imageListBlock } from "../blocks/imageList";
+import { titleBlock } from "../blocks/title";
 
 import {
   Container,
@@ -15,7 +16,7 @@ import {
   Text,
 } from "@chakra-ui/react";
 
-export function InformationSection({ content }) {
+function InformationSection({ index, data }) {
   // we have
   const renderers = {
     image: ({ src, alt, ...props }) => {
@@ -37,7 +38,7 @@ export function InformationSection({ content }) {
   };
 
   return (
-    <>
+    <BlocksControls index={index} focusRing={{ offset: 0 }} insetControls>
       <Divider />
       <Flex pt={5} pb={14}>
         <Heading
@@ -55,38 +56,36 @@ export function InformationSection({ content }) {
             sticky={false}
             focusRing={true}
           >
-            <ReactMarkdown source={content} renderers={renderers} />
+            <ReactMarkdown source={data.content} renderers={renderers} />
           </InlineWysiwyg>
           <Box>
-          {/* <InlineForm > */}
-            {/* <InlineBlocks name="sectionBlocks" blocks={SECTION_BLOCKS} /> */}
-          {/* </InlineForm> */}
+            <InlineBlocks name="sectionBlocks" blocks={SECTION_BLOCKS} />
           </Box>
         </Box>
       </Flex>
-    </>
+    </BlocksControls>
   );
 }
 
 const SECTION_BLOCKS = {
-  imageList: imageListBlock,
+  title: titleBlock
 };
 
 export const sectionBlock = {
-  Component: ({ index, data }) => (
-    <BlocksControls index={index} focusRing={{ offset: 0 }} insetControls>
-      {JSON.stringify(data)}
-      <InformationSection {...data} />
-    </BlocksControls>
-  ),
+  Component: InformationSection,
   template: {
     label: "Information Section",
     defaultItem: {
+      _template: "section",
       title: "Test title",
       content: "Some content",
       sectionBlocks: [
-        
-      ]
+        {
+          _template: "title",
+          title: "Hello there Title",
+        },
+      ],
     },
+    fields: [],
   },
 };

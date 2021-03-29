@@ -1,25 +1,22 @@
 import React from "react";
-import { InlineTextarea, BlocksControls } from "react-tinacms-inline";
+import { BlocksControls, InlineTextarea } from 'react-tinacms-inline';
 
-export function ImageList() {
+function ImageList({index}) {
   return (
-    <h3>
-        test
-      {/* <InlineTextarea name="title" focusRing={false} /> */}
-    </h3>
+    <BlocksControls index={index} focusRing={{ offset: 0 }} insetControls>
+      <InlineTextarea name="testTitle" focusRing={false} />
+    </BlocksControls>
   );
 }
 
 export const imageListBlock = {
-  Component: ({ index, data }) => (
-    <BlocksControls index={index} focusRing={{ offset: 0 }} insetControls>
-      test{/* <ImageList {...data} /> */}
-    </BlocksControls>
-  ),
+  component: ImageList,
   template: {
-    label: "Image List",
+    label: 'Image List',
     defaultItem: {
-      testTitle: "Image data",
+      _template: 'childComponent',
+      testTitle: 'Image data',
     },
+    fields: [],
   },
 };
